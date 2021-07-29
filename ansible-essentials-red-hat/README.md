@@ -38,11 +38,31 @@ tasks:
         
    - name: install nginx
      yum:
-        path: nginx
+        name: nginx
         state: latest
         
    - name: restart nginx
      service:
-        path: nginx
+        name: nginx
+        state: restarted
+```
+- Handler in a play
+```
+tasks:
+    - name: add cache dir
+      file:
+        path: /opt/cache
+        state: directory
+        
+    - name: install nginx
+      yum:
+        name: nginx
+        state: latest
+      notify: restart nginx
+        
+handlers:
+    - name: restart nginx
+      service:
+        name: nginx
         state: restarted
 ```
