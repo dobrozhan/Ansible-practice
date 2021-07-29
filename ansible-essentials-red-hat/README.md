@@ -28,4 +28,21 @@ ansible web -i hosts -m yum -a "name=httpd state=absent" -b // deleting Apache s
 15. Inventory vars
 16. Role defaults
 
-
+- Tasks in play
+```
+tasks:
+   - name: add cache dir
+     file:
+        path: /opt/cache
+        state: directory
+        
+   - name: install nginx
+     yum:
+        path: nginx
+        state: latest
+        
+   - name: restart nginx
+     service:
+        path: nginx
+        state: restarted
+```
