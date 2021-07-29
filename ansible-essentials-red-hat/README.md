@@ -31,18 +31,18 @@ ansible web -i hosts -m yum -a "name=httpd state=absent" -b // deleting Apache s
 - Tasks in play
 ```
 tasks:
-   - name: add cache dir
-     file:
+    - name: add cache dir
+      file:
         path: /opt/cache
         state: directory
         
-   - name: install nginx
-     yum:
+    - name: install nginx
+      yum:
         name: nginx
         state: latest
         
-   - name: restart nginx
-     service:
+    - name: restart nginx
+      service:
         name: nginx
         state: restarted
 ```
