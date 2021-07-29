@@ -66,3 +66,22 @@ handlers:
         name: nginx
         state: restarted
 ```
+- Playbook example
+```
+---
+- name: install and start apache
+  hosts: web
+  vars:
+    http_port: 80
+    max_clients: 200
+  remote_user: root
+  
+  tasks:
+  - name: install httpd
+    yum: pkg=httpd state=latest
+  - name: write the apache config file
+    template: src=/srv/httpd.j2 dest=/etc/httpd.conf
+  - name: start httpd
+    service: name=httpd state=started
+    
+```
