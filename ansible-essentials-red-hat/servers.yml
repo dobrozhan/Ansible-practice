@@ -1,0 +1,17 @@
+---
+- name: apply the common configuration to all hosts
+  hosts: all
+  remote_user: vagrant
+  become: yes
+  
+  roles:
+  - common
+  
+- name: apply the apache role
+  hosts: web
+  remote_user: vagrant
+  become: yes
+   
+  roles:
+  - apache
+   
