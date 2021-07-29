@@ -120,3 +120,24 @@ Run playbook
 ```
 ansible-playbook -i hosts book.yml
 ```
+- Roles
+```
+site.yml
+roles/
+  common/
+    files/
+    templates/
+    tasks/
+    handlers/
+    vars/
+    defaults/
+    meta/
+  webservers/
+    files/
+    templates/
+    tasks/
+    handlers/
+    vars/
+    defaults/
+    meta/
+```
