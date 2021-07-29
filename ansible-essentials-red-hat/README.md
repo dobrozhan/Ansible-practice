@@ -1,7 +1,5 @@
 ANSIBLE ESSENTIALS: SIMPLICITY IN AUTOMATION TECHNICAL OVERVIEW (DO007) - RED HAT
 
-Idempotent behavior
-
 - Ad-hoc commands |
 -i : inventory path, -m : module (ping, setup, yum). Idempotence principle.
 ```
