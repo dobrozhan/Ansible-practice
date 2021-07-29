@@ -139,3 +139,11 @@ roles/
     defaults/
     meta/
 ```
+```
+# site.yml
+---
+- hosts: web
+  roles:
+    - common
+    - webservers
+```
