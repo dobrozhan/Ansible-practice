@@ -66,7 +66,7 @@ handlers:
         name: nginx
         state: restarted
 ```
-- Playbook example
+- Playbook example - 1
 ```
 ---
 - name: install and start apache
@@ -84,4 +84,37 @@ handlers:
   - name: start httpd
     service: name=httpd state=started
     
+```
+- Playbook example - 2
+```
+---
+- name: install and start apache
+  hosts: web
+  remote_user: vagrant
+  become: yes
+  
+  tasks:
+  - name: install epel repo
+    yum: name=epel-release state=present
+    
+  - name: install python bindings for SELinux
+    yum: name={{item}} state=present
+    with_items:
+    - libselinux-python
+    - libsemanage-python
+  
+  - name: test to see if SELinux is running
+    command: getenforce
+    register: sestatus
+    changed_when: false
+    
+  - name: install apache
+    yum: httpd state=present
+    
+  - name: start apache
+    service: name=httpd state=started enabled=yes
+```
+Run playbook
+```
+ansible-playbook -i hosts book.yml
 ```
