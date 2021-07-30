@@ -98,7 +98,7 @@ handlers:
     yum: name=epel-release state=present
     
   - name: install python bindings for SELinux
-    yum: name={{item}} state=present
+    yum: name="{{item}}" state=present
     with_items:
     - libselinux-python
     - libsemanage-python
